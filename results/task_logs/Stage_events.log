@@ -1,0 +1,34 @@
+[2026-09-07T10:13:51.177+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: final_project.Stage_events manual__2018-11-01T00:00:00+00:00 [queued]>
+[2026-09-07T10:13:51.182+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: final_project.Stage_events manual__2018-11-01T00:00:00+00:00 [queued]>
+[2026-09-07T10:13:51.182+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 4
+[2026-09-07T10:13:51.190+0000] {taskinstance.py:2191} INFO - Executing <Task(StageToRedshiftOperator): Stage_events> on 2018-11-01 00:00:00+00:00
+[2026-09-07T10:13:51.200+0000] {standard_task_runner.py:60} INFO - Started process 1538 to run task
+[2026-09-07T10:13:51.204+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'final_project', 'Stage_events', 'manual__2018-11-01T00:00:00+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/final_project.py', '--cfg-path', '/tmp/tmpqdzyb84g']
+[2026-09-07T10:13:51.207+0000] {standard_task_runner.py:88} INFO - Job 14: Subtask Stage_events
+[2026-09-07T10:13:51.238+0000] {task_command.py:423} INFO - Running <TaskInstance: final_project.Stage_events manual__2018-11-01T00:00:00+00:00 [running]> on host fc62c915245b
+[2026-09-07T10:13:51.265+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:207: AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+  warnings.warn(_create_deprecation_warning(key, self._deprecation_replacements[key]))
+
+[2026-09-07T10:13:51.285+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='udacity' AIRFLOW_CTX_DAG_ID='final_project' AIRFLOW_CTX_TASK_ID='Stage_events' AIRFLOW_CTX_EXECUTION_DATE='2018-11-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2018-11-01T00:00:00+00:00'
+[2026-09-07T10:13:51.293+0000] {base.py:83} INFO - Using connection ID 'aws_credentials' for task execution.
+[2026-09-07T10:13:51.294+0000] {connection_wrapper.py:378} INFO - AWS Connection (conn_id='aws_credentials', conn_type='aws') credentials retrieved from login and password.
+[2026-09-07T10:13:51.294+0000] {connection_wrapper.py:395} INFO - AWS Connection (conn_id='aws_credentials', conn_type='aws') session token retrieved from extra, please note you are responsible for renewing these.
+[2026-09-07T10:13:51.301+0000] {stage_redshift.py:44} INFO - Clearing data from destination Redshift table staging_events
+[2026-09-07T10:13:51.305+0000] {base.py:83} INFO - Using connection ID 'redshift' for task execution.
+[2026-09-07T10:13:52.124+0000] {sql.py:450} INFO - Running statement: DELETE FROM staging_events, parameters: None
+[2026-09-07T10:13:52.385+0000] {sql.py:459} INFO - Rows affected: 0
+[2026-09-07T10:13:52.796+0000] {stage_redshift.py:51} INFO - Copying data from s3://udacity-dend/log_data/2018/11/ to Redshift table staging_events
+[2026-09-07T10:13:52.801+0000] {base.py:83} INFO - Using connection ID 'redshift' for task execution.
+[2026-09-07T10:13:53.599+0000] {sql.py:450} INFO - Running statement: 
+        COPY staging_events
+        FROM 's3://udacity-dend/log_data/2018/11/'
+        ACCESS_KEY_ID 'REDACTED'
+        SECRET_ACCESS_KEY '***'
+        SESSION_TOKEN '***'
+        REGION 'us-west-2'
+        JSON 's3://udacity-dend/log_json_path.json'
+    , parameters: None
+[2026-09-07T10:13:57.057+0000] {stage_redshift.py:62} INFO - Successfully copied data to staging_events
+[2026-09-07T10:13:57.066+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=final_project, task_id=Stage_events, execution_date=20181101T000000, start_date=20260907T101351, end_date=20260907T101357
+[2026-09-07T10:13:57.103+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-09-07T10:13:57.121+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

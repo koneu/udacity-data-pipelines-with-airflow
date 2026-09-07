@@ -1,4 +1,5 @@
 logs
+project_description/
 
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,python
@@ -63,6 +64,7 @@ cover/
 
 # Django stuff:
 *.log
+!results/task_logs/*.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
